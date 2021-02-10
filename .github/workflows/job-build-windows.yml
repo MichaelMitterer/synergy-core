@@ -18,6 +18,7 @@ jobs:
       QT_BASE_URL: http://qt.mirror.constant.com/
       BONJOUR_SDK_HOME: ${{ github.workspace }}\deps\bonjour\BonjourSDK
       CMAKE_PREFIX_PATH: ${{ github.workspace }}\deps\Qt\5.12.6\msvc2017_64\
+      SYNERGY_ENTERPRISE: 1
 
     steps:
     - uses: actions/checkout@v2
@@ -59,7 +60,7 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake -DCMAKE_BUILD_TYPE=Release ..
+        cmake -DCMAKE_BUILD_TYPE=Release -DSYNERGY_ENTERPRISE=ON ..
         . ./version
         msbuild synergy-core.sln /p:Configuration=Release
 
