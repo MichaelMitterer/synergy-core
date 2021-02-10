@@ -63,5 +63,11 @@ jobs:
         . ./version
         msbuild synergy-core.sln /p:Configuration=Release
 
+    - name: Artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: release
+        path: ./build/bin/Release/*
+
     - name: Run unit test
       run: .\build\bin\Release\unittests.exe
